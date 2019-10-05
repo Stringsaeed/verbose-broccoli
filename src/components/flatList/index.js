@@ -18,9 +18,10 @@ export const List = ({
       keyExtractor={item => item.id.toString()}
       data={data}
       renderItem={item => {
+        const ids = data.map(dataItem => parseInt(dataItem.item.id));
         const addCondition = !(parseInt(item.item.id) % 2);
         const removeCondition =
-          cartData && cartData.includes(parseInt(item.item.id));
+          cartData && cartData.some(itemId => ids.includes(itemId));
         if (
           cartData
             ? addCondition && removeCondition
