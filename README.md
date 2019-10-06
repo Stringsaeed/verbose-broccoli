@@ -16,4 +16,4 @@
 | redux && rxjs && redux-* && *-redux | State Management |
 ---
 * ## please note that I implemented some many type of design patterns to use them all
-  ## please note that I didn't test the app on iOS device 
+* ## please note that I didn't test the app on iOS device 
