@@ -1,3 +1,4 @@
+import {configureStore} from '../store';
 import {PRODUCTS_REQUEST, ADD_PRODUCT, REMOVE_PRODUCT} from '../constants';
 
 export const fetchProducts = () => ({

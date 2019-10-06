@@ -5,54 +5,60 @@ import {Button, TextInput} from 'react-native-paper';
 import changeNavigationBarColor from 'react-native-navigation-bar-color';
 
 export const FormScreen = props => {
-  changeNavigationBarColor('#f2f0d8', true);
-  const [name, setName] = useState(props.name);
+  changeNavigationBarColor('#00001b', false);
+  const {name, savingIsLoading, addData} = props;
+  const [localName, setName] = useState(name);
 
   const handlePress = () => {
-    if (name) {
-      props.addData(name);
+    if (localName) {
+      addData(localName);
     }
   };
 
   return (
     <Fragment>
-      <StatusBar backgroundColor="#f2f0d8" barStyle="dark-content" />
-      <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>{`Welcome Mr. ${name || '...'}`}</Text>
-      </View>
-      <View style={styles.textInput}>
-        <TextInput
-          label="Name"
-          mode="outlined"
-          placeholder="Please Enter Your Name Here"
-          onChangeText={text => setName(text)}
-          value={name}
-        />
-      </View>
-      <View style={styles.button}>
-        <Button
-          color="#f2055c"
-          icon="save"
-          mode="contained"
-          onPress={handlePress}
-          dark
-          loading={props.savingIsLoading}>
-          Confirm
-        </Button>
-        {/* <Snackbar visible={visible} onDismiss={() => setVisible(false)}>
-          Name is saved successfully
-        </Snackbar> */}
-      </View>
-      <View style={styles.button}>
-        <Button
-          mode="contained"
-          onPress={() => {
-            props.navigation.navigate('Products');
-          }}
-          dark
-          color="#f2055c">
-          API
-        </Button>
+      <StatusBar backgroundColor="#00001b" barStyle="light-content" />
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.titleText}>{`Welcome Mr. ${localName ||
+            '...'}`}</Text>
+        </View>
+        <View style={styles.textInput}>
+          <TextInput
+            label="Name"
+            mode="outlined"
+            placeholder="Please Enter Your Name Here"
+            onChangeText={text => setName(text)}
+            value={localName}
+            style={styles.textInputStyle}
+          />
+        </View>
+        <View style={styles.buttonView}>
+          <Button
+            labelStyle={styles.buttonLabel}
+            style={styles.button}
+            color="#f2055c"
+            icon="save"
+            mode="contained"
+            onPress={handlePress}
+            dark
+            loading={savingIsLoading}>
+            Confirm
+          </Button>
+        </View>
+        <View style={styles.buttonView}>
+          <Button
+            labelStyle={styles.buttonLabel}
+            style={styles.button}
+            mode="contained"
+            onPress={() => {
+              props.navigation.navigate('Products');
+            }}
+            dark
+            color="#f2055c">
+            API
+          </Button>
+        </View>
       </View>
     </Fragment>
   );
@@ -75,6 +81,7 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 35,
     fontWeight: 'bold',
+    color: '#00001b',
   },
   textInput: {
     flex: 2,
@@ -82,10 +89,23 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     marginBottom: '10%',
   },
-  button: {
+  buttonView: {
     flex: 0.5,
     justifyContent: 'center',
-    marginHorizontal: '10%',
+    marginHorizontal: '5%',
     marginBottom: '5%',
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#f2f0d8',
+  },
+  button: {
+    elevation: 0,
+  },
+  textInputStyle: {
+    backgroundColor: '#f2f0d8',
+  },
+  buttonLabel: {
+    color: '#f2f0d8',
   },
 });

@@ -19,7 +19,6 @@ import {HeaderIcon, WithBadge, List} from '../../components';
 export class ProductsScreen extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.props.fetch();
   }
   componentDidMount() {

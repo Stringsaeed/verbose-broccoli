@@ -45,7 +45,7 @@ CartScreen.navigationOptions = ({navigation}) => ({
 
 CartScreen.propTypes = {
   data: PropTypes.array.isRequired,
-  cartData: PropTypes.arrayOf(PropTypes.number),
+  cartData: PropTypes.arrayOf(PropTypes.object),
   removeProduct: PropTypes.func,
 };
 

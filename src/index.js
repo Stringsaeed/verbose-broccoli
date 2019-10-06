@@ -12,6 +12,9 @@ import {Provider} from 'react-redux';
 
 import {configureStore} from './store';
 import {AppContainer} from './containers';
+import {useScreens} from 'react-native-screens';
+
+useScreens();
 
 const store = configureStore();
 
